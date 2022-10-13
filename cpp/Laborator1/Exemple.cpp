@@ -1,11 +1,20 @@
 #include <iostream>
 
-int main()
+int f(int x) 
 {
-    bool a = true;
-    int f = (!a) ? 1:2;
-
-    std::cout<<f<<std::endl;
+    return 2*x;
+}
+int r(int x,int y)
+{
+    return f(x) + y;
+}
+int main(int argc, char* argv[])
+{
+    std::cout<<"argc: "<<argc<<std::endl;
+    for(int i = 0; i < argc; i++)
+    {
+        std::cout<<"argv "<< i << " is: " << argv[i]<<std::endl;
+    }
 
     return 0;
 
