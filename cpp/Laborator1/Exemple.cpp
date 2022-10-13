@@ -8,6 +8,7 @@ int r(int x,int y)
 {
     return f(x) + y;
 }
+
 int main(int argc, char* argv[])
 {
     std::cout<<"argc: "<<argc<<std::endl;
