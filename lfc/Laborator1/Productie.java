@@ -15,5 +15,11 @@ public class Productie
         this.membruStang = membruStang;
         this.membruDrept = membruDrept;
     }
+
+    @Override
+    public String toString()
+    {
+        return membruStang + " -> " + membruDrept;
+    }
     
 }
