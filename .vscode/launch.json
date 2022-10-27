@@ -2,6 +2,27 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "type": "java",
+            "name": "Launch PGT",
+            "request": "launch",
+            "mainClass": "ag.Parcurgeri.PGT",
+            "projectName": "University_ce2bf77"
+        },
+        {
+            "type": "java",
+            "name": "Launch Test",
+            "request": "launch",
+            "mainClass": "Laborator1.Test",
+            "projectName": "University_ce2bf77"
+        },
+        {
+            "type": "java",
+            "name": "Launch Markov",
+            "request": "launch",
+            "mainClass": "Laborator1.Markov",
+            "projectName": "University_ce2bf77"
+        },
+        {
             "name": "C/C++: g++ build and debug active file",
             "type": "cppdbg",
             "request": "launch",
