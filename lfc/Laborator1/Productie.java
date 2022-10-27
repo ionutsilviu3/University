@@ -2,8 +2,8 @@ package Laborator1;
 
 public class Productie
 {
-    String membruStang;
-    String membruDrept;
+    private String membruStang;
+    private String membruDrept;
 
     public Productie()
     {
@@ -14,6 +14,15 @@ public class Productie
     {
         this.membruStang = membruStang;
         this.membruDrept = membruDrept;
+    }
+    public String getMembruStang()
+    {
+        return this.membruStang;
+    }
+
+    public String getMembruDrept()
+    {
+        return this.membruDrept;
     }
 
     @Override
