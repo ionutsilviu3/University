@@ -19,12 +19,15 @@ public class Markov
 
     public void citireFisier()
     {
-        try (Scanner scanner = new Scanner(new File("/home/ionut/University/lfc/Laborator1/test.txt"))) {
+        try (Scanner scanner = new Scanner(new File("lfc/Laborator1/test.txt"))) {
             if(scanner.hasNext())
             vocabular = scanner.nextLine();
             while (scanner.hasNext()) {
                 String[] productiile = scanner.nextLine().split("\\s+");
-                productii.add(new Productie(productiile[0], productiile[1]));
+                if(productiile[1].contains("."))
+                    productii.add(new Productie(productiile[0], productiile[1], true));
+                else
+                productii.add(new Productie(productiile[0], productiile[1], false));
             }
         } catch (FileNotFoundException fnfe) {
             System.out.println("Eroare la citirea fisierului. Fisierul nu a fost gasit!");;
@@ -38,9 +41,23 @@ public class Markov
         System.out.print("Introduceti un cuvant: ");
         cuvant = sc.nextLine();
         if(validare() == false)
-        citire();
+        {
+            System.out.println("Cuvant invalid!");
+            citire();
+        }
 
         derivare();
+        System.out.println();
+        System.out.println("Mai doriti sa cititi un cuvant ? ( Da / Nu )");
+
+        if(sc.nextLine().toLowerCase().equals("da"))
+        {
+
+            afisare();
+            citire();
+        }
+        else
+            sc.close();
     }
     public boolean validare()
     {
@@ -53,30 +70,44 @@ public class Markov
     }
     public void derivare()
     {
+        System.out.print(cuvant);
+    boolean modificare = true;
 
-    for(Productie p : productii)
-    {
-            while(cuvant.contains(p.getMembruStang()))
-                {
-                    if(p.getMembruDrept().equals("#"))
-                    cuvant = cuvant.replaceFirst(p.getMembruStang(), "");
-                    else
-                    cuvant.replaceFirst(p.getMembruStang(), p.getMembruDrept());
+    while(modificare){
+        modificare = false;
+        for (Productie p : productii) {
+            if (cuvant.contains(p.getMembruStang())) {
+                if(p.getMembruDrept().equals("#"))
+                cuvant = cuvant.replaceFirst(p.getMembruStang(), "");
+                else
+                cuvant = cuvant.replaceFirst(p.getMembruStang(), p.getMembruDrept());
+                if(cuvant.isEmpty())
+                    cuvant = p.getMembruDrept();
+                modificare = true;
+                System.out.print(" -> " + cuvant);
 
-                    System.out.print(cuvant + " -> ");
+                if (p.isProdFinala()) {
+                    return;
                 }
-                
+                break;
+            }
 
         }
+        if(modificare == false)
+            return;
+    }
+
     }
     
     public void afisare()
     {
+        System.out.println();
         System.out.println("Vocabularul este: " + vocabular);
         System.out.println("Productii: ");
         for(Productie p : productii)
         {
-            System.out.println(p.getMembruStang() + " -> " + p.getMembruDrept());
+            System.out.println(p.getMembruStang() + " -> " + p.getMembruDrept() + " | " + p.isProdFinala());
         }
     }
+
 }

@@ -5,6 +5,14 @@ public class Productie
     private String membruStang;
     private String membruDrept;
 
+
+    public Productie(String membruStang, String membruDrept, boolean prodFinala) {
+        this.membruStang = membruStang;
+        this.membruDrept = membruDrept;
+        this.prodFinala = prodFinala;
+    }
+
+    private boolean prodFinala = false;
     public Productie()
     {
 
@@ -23,6 +31,14 @@ public class Productie
     public String getMembruDrept()
     {
         return this.membruDrept;
+    }
+
+    public boolean isProdFinala() {
+        return prodFinala;
+    }
+
+    public void setProdFinala(boolean prodFinala) {
+        this.prodFinala = prodFinala;
     }
 
     @Override
