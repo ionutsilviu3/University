@@ -5,6 +5,7 @@ public class Productie
     private String membruStang;
     private String membruDrept;
 
+    private boolean prodFinala = false;
 
     public Productie(String membruStang, String membruDrept, boolean prodFinala) {
         this.membruStang = membruStang;
@@ -12,7 +13,7 @@ public class Productie
         this.prodFinala = prodFinala;
     }
 
-    private boolean prodFinala = false;
+
     public Productie()
     {
 
