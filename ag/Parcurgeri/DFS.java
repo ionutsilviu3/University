@@ -31,47 +31,56 @@ public class DFS {
 
         V.add(s);
 
-        int[] tu = new int[n];
-        int[] td = new int[n];
+        int[] t1 = new int[n];
+        int[] t2 = new int[n];
         int[] p = new int[n];
         int t = 1;
-        tu[s] = 1;
+        t1[s] = 1;
 
         for (int i = 0; i < n; i++) {
             p[i] = -1;
         }
         while(W.size() != n)
         {
+            System.out.println(s);
         while (!V.isEmpty()) {
             int x = V.firstElement();
             int y = -1;
             for (int i = 0; i < adjList[x].size(); i++) {
                 if (U.contains(adjList[x].get(i))) {
                     y = adjList[x].get(i);
+                    p[y] = x;
+                    t1[y] = ++t;
+                }
+                else {
+                    V.remove(x);
+                    W.add(x);
+                    t2[x] = ++t;
                     break;
                 }
             }
-            if (y != -1) {
-                U.remove(Integer.valueOf(y));
-                V.add(y);
-                p[y] = x;
-                tu[y] = ++t;
-            } else {
-                V.remove(Integer.valueOf(x));
-                W.add(x);
-            }
-
         }
         if(!U.isEmpty())
-    {
-        int x = 0;
-        V.clear();
-        V.add(x);
-        U.remove(x);
+        {
+        s = U.get(0);
+        V.push(s);
+        U.remove(0);
+        t++;
+        t1[s] = t;
+        }
+    }
+        System.out.println("W = " + W);
+        System.out.println("U = " + U);
+        System.out.print("T1 = [ ");
+        for(int i : t1)
+            System.out.print(i + ", ");
+        System.out.print("]");
+        System.out.println();
+        System.out.print("T2 = [ ");
+        for(int j : t2)
+            System.out.print(j + ", ");
+        System.out.println("]");
 
-    }
-    }
-        System.out.println(W);
-        System.out.println(U);
+
     }
 }
