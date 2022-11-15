@@ -6,7 +6,11 @@ import java.util.Random;
 import java.util.Scanner;
 import java.util.Stack;
 
+import static ag.Parcurgeri.Utils.afisareVector;
+
 public class DFS {
+
+
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
@@ -28,7 +32,6 @@ public class DFS {
         Stack<Integer> V = new Stack<>();
         ArrayList<Integer> U = new ArrayList<>();
         ArrayList<Integer> W = new ArrayList<>();
-
         V.add(s);
 
         int[] t1 = new int[n];
@@ -42,7 +45,6 @@ public class DFS {
         }
         while(W.size() != n)
         {
-            System.out.println(s);
         while (!V.isEmpty()) {
             int x = V.firstElement();
             int y = -1;
@@ -71,15 +73,11 @@ public class DFS {
     }
         System.out.println("W = " + W);
         System.out.println("U = " + U);
-        System.out.print("T1 = [ ");
-        for(int i : t1)
-            System.out.print(i + ", ");
-        System.out.print("]");
-        System.out.println();
-        System.out.print("T2 = [ ");
-        for(int j : t2)
-            System.out.print(j + ", ");
-        System.out.println("]");
+        System.out.print("T1 =  ");
+        Utils.afisareVector(t1);
+
+        System.out.print("T2 =  ");
+        Utils.afisareVector(t2);
 
 
     }
