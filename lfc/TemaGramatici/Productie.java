@@ -29,7 +29,7 @@ public class Productie
     @Override
     public String toString()
     {
-        return membruStang + " -> " + membruDrept;
+        return "\n" + membruStang + " -> " + membruDrept;
     }
 
 }
