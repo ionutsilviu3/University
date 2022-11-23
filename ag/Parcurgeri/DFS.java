@@ -1,5 +1,7 @@
 package ag.Parcurgeri;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Random;
@@ -12,21 +14,28 @@ public class DFS {
 
     public static void main(String[] args) {
 
-        Scanner sc = new Scanner(System.in);
-        System.out.print("Introduceti n: ");
-        int n = sc.nextInt();
-        int ni;
-        System.out.print("Introduceti s: ");
-        int s = sc.nextInt();
-        LinkedList<Integer>[] adjList = new LinkedList[n];
+        int n;
+        int s;
+        LinkedList<Integer>[] adjList;
+        try (Scanner sc = new Scanner(new File("ag/Parcurgeri/graf.txt"))) {
+            //System.out.print("Introduceti n: ");
+            n = sc.nextInt();
+            int ni;
+            //System.out.print("Introduceti s: ");
+            s = sc.nextInt();
+            adjList = new LinkedList[n];
 
-        for (int i = 0; i < n; i++) {
-            adjList[i] = new LinkedList<>();
-            System.out.println("Nr de succesori al nodului " + i);
-            ni = sc.nextInt();
-            System.out.println("Introduceti succesorii: ");
-            for (int j = 0; j < ni; j++)
-                adjList[i].add(sc.nextInt());
+            for (int i = 0; i < n; i++) {
+                adjList[i] = new LinkedList<>();
+                //System.out.println("Nr de succesori al nodului " + i);
+                ni = sc.nextInt();
+                //System.out.println("Introduceti succesorii: ");
+                for (int j = 0; j < ni; j++)
+                    adjList[i].add(sc.nextInt());
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("EROARE FISIER :(");
+            throw new RuntimeException(e);
         }
 
         Stack<Integer> V = new Stack<>();
