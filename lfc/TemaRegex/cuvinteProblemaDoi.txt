@@ -1,0 +1,6 @@
+abcd
+aabb
+aaaabb
+5
+4
+efabe
